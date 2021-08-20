@@ -1,0 +1,30 @@
+# Eclipse settings
+.settings
+.classpath
+.project
+
+# Idea settings
+.idea
+*.iml
+
+# global settings
+bin
+target
+logs
+*~
+*.log
+*.bak
+
+*.class
+*.tmp
+Thumbs.db
+
+*.hprof
+
+.DS_Store
+
+tmp
+
+*.swp
+
+
