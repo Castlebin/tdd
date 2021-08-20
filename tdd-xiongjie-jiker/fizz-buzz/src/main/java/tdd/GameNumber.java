@@ -1,9 +1,5 @@
 package tdd;
 
-/**
- * @author gaoyuxin <gaoyuxin@kuaishou.com>
- * Created on 2021-08-20
- */
 public class GameNumber {
     private final int rawNumber;
 
