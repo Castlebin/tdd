@@ -13,6 +13,7 @@
 
     <modules>
         <module>fizz-buzz</module>
+        <module>Args</module>
     </modules>
 
     <properties>
