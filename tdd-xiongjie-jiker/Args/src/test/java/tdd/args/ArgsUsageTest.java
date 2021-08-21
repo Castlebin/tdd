@@ -9,7 +9,7 @@ public class ArgsUsageTest {
     @Test
     public void testArgs() {
         String argsText = "-l -p 8080 -d /usr/logs";
-        String schemaText = "l:boolean p:integer d:string";
+        String schemaText = "l:bool p:int d:str";
 
         // 1. 把命令行字符串拆分成main函数可用的字符串数组
         String[] argsArr = new CLIInputParser().parse(argsText);
