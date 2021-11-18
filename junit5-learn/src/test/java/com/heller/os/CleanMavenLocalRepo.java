@@ -12,6 +12,16 @@ import org.junit.jupiter.api.Test;
 
 public class CleanMavenLocalRepo {
 
+    private static final long ONE_DAY = 24 * 60 * 60 * 1000;
+    private static final Set<String> KUAISHOU_ROOT_POM = new HashSet<>();
+
+    // .m2/repository/com/kuaishou/infra/boot/ks-boot-root-pom/
+    // .m2/repository/kuaishou/kuaishou-root-pom/
+    static {
+        KUAISHOU_ROOT_POM.add("kuaishou-root-pom");
+        KUAISHOU_ROOT_POM.add("ks-boot-root-pom");
+    }
+
     @Test
     public void doClean() {
         String mavenLocalRepoBasePath = "/Users/YX/.m2/repository";
@@ -54,12 +64,10 @@ public class CleanMavenLocalRepo {
             for (int i = 1; i < releaseList.size(); i++) {
                 File file = releaseList.get(i);
                 deleteFile(file);
-                System.out.println("删除文件：" + file.getAbsolutePath());
             }
             for (int i = 1; i < snapshotList.size(); i++) {
                 File file = snapshotList.get(i);
                 deleteFile(file);
-                System.out.println("删除文件：" + file.getAbsolutePath());
             }
         } else if (subDirFile.exists()) {
             File[] dirs = subDirFile.listFiles();
@@ -79,7 +87,17 @@ public class CleanMavenLocalRepo {
             return false;
         }
 
+        if (isProtectedDir(dirFile)) {
+            return false;
+        }
+
         if (dirFile.isFile()) {
+            // 下载下来还没有一天时间的文件，不删除
+            if (dirFile.lastModified() - System.currentTimeMillis() < ONE_DAY) {
+                return false;
+            }
+
+            System.out.println("删除文件：" + dirFile.getAbsolutePath());
             return dirFile.delete();
         } else {
             for (File file : dirFile.listFiles()) {
@@ -88,6 +106,17 @@ public class CleanMavenLocalRepo {
         }
 
         return dirFile.delete();
+    }
+
+    public static boolean isProtectedDir(File dirFile) {
+        String absolutePath = dirFile.getAbsolutePath();
+        for (String name : KUAISHOU_ROOT_POM) {
+            if (absolutePath.contains(name)
+                && absolutePath.toLowerCase().contains("-snapshot")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
