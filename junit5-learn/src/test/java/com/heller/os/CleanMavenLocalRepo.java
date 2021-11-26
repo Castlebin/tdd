@@ -58,14 +58,14 @@ public class CleanMavenLocalRepo {
                         }
                     });
             // 按修改时间倒序排列，保留最新的版本
-            Comparator<File> comparator = (f1, f2) -> (int)(f2.lastModified()- f1.lastModified());
+            Comparator<File> comparator = (f1, f2) -> (int)(f1.lastModified()- f2.lastModified());
             releaseList.sort(comparator);
             snapshotList.sort(comparator);
-            for (int i = 1; i < releaseList.size(); i++) {
+            for (int i = 0; i < releaseList.size() - 1; i++) {
                 File file = releaseList.get(i);
                 deleteFile(file);
             }
-            for (int i = 1; i < snapshotList.size(); i++) {
+            for (int i = 0; i < snapshotList.size() - 1; i++) {
                 File file = snapshotList.get(i);
                 deleteFile(file);
             }
@@ -94,6 +94,7 @@ public class CleanMavenLocalRepo {
         if (dirFile.isFile()) {
             // 下载下来还没有一天时间的文件，不删除
             if (dirFile.lastModified() - System.currentTimeMillis() < ONE_DAY) {
+                System.out.println("文件下载下来还没有一天时间，不要删除：" + dirFile.getAbsolutePath());
                 return false;
             }
 
