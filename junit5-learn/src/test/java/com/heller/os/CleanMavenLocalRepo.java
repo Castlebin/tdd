@@ -133,8 +133,8 @@ public class CleanMavenLocalRepo {
 
         if (dirFile.isFile()) {
             // 下载下来还没有一天时间的文件，不删除
-            if (System.currentTimeMillis() - dirFile.lastModified() < 2 * ONE_DAY) {
-                System.out.println("文件下载下来还没有2天时间，不删除：" + dirFile.getAbsolutePath());
+            if (System.currentTimeMillis() - dirFile.lastModified() < 30 * ONE_DAY) {
+                System.out.println("文件下载下来时间较短，暂不删除：" + dirFile.getAbsolutePath());
                 return false;
             }
 
