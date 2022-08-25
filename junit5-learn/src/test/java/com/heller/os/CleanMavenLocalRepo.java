@@ -22,6 +22,8 @@ public class CleanMavenLocalRepo {
     private static final long ONE_MIN = 60 * 1000;
     private static final long ONE_DAY = 24 * 60 * ONE_MIN;
 
+    private static final long CLEAN_INTERVAL = 15 * ONE_DAY;
+
     private static final Set<String> KUAISHOU_ROOT_POM = new HashSet<>();
 
     // .m2/repository/com/kuaishou/infra/boot/ks-boot-root-pom/
@@ -133,7 +135,7 @@ public class CleanMavenLocalRepo {
 
         if (dirFile.isFile()) {
             // 下载下来还没有一天时间的文件，不删除
-            if (System.currentTimeMillis() - dirFile.lastModified() < 30 * ONE_DAY) {
+            if (System.currentTimeMillis() - dirFile.lastModified() < CLEAN_INTERVAL) {
                 System.out.println("文件下载下来时间较短，暂不删除：" + dirFile.getAbsolutePath());
                 return false;
             }

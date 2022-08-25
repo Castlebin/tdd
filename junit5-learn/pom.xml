@@ -19,11 +19,11 @@
 
         <spring-boot.version>2.4.1</spring-boot.version>
 
+        <lombok.version>1.18.22</lombok.version>
         <commons-codec.version>1.15</commons-codec.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <fastjson.version>1.2.80</fastjson.version>
         <hutool.version>5.7.22</hutool.version>
-
     </properties>
 
     <dependencyManagement>
@@ -39,6 +39,14 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
