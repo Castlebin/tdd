@@ -17,12 +17,12 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <spring-boot.version>2.4.1</spring-boot.version>
+        <spring-boot.version>2.7.2</spring-boot.version>
 
-        <lombok.version>1.18.22</lombok.version>
+        <lombok.version>1.18.24</lombok.version>
         <commons-codec.version>1.15</commons-codec.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
-        <hutool.version>5.7.22</hutool.version>
+        <hutool.version>5.8.9</hutool.version>
     </properties>
 
     <dependencyManagement>
