@@ -17,12 +17,12 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <spring-boot.version>2.7.2</spring-boot.version>
+        <spring-boot.version>3.1.0</spring-boot.version>
 
         <lombok.version>1.18.24</lombok.version>
-        <commons-codec.version>1.15</commons-codec.version>
+
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
-        <hutool.version>5.8.9</hutool.version>
+        <hutool.version>5.8.12</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -55,7 +55,6 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>${commons-codec.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
