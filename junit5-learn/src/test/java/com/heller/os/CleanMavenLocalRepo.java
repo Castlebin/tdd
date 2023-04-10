@@ -36,7 +36,7 @@ public class CleanMavenLocalRepo {
     @Test
     public void doClean() {
         String mavenLocalRepoBasePath = "/Users/YX/.m2/repository";
-        String[] sudDirPaths = new String[] {"acfun", "kuaishou", "com/kuaishou"};
+        String[] sudDirPaths = new String[] {"acfun", "kuaishou", "com/kuaishou", "com/kwai"};
         Set<String> subDirs = new HashSet<>();
         Arrays.stream(sudDirPaths)
                 .forEach(sudDirPath -> subDirs.add(mavenLocalRepoBasePath + "/" + sudDirPath));
